@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "item")
 data class Item(
-    @PrimaryKey
-    val id: Int,
-    val description: String,
-    val icon: String,
-    val name: String,
-    val timestamp: Long,
-    val url: String
+	@PrimaryKey
+	val id: Int,
+	val description: String,
+	val icon: String,
+	val name: String,
+	val timestamp: Long,
+	val url: String
 )

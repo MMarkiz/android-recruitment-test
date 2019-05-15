@@ -1,5 +1,6 @@
 package dog.snow.androidrecruittest.ui.main
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dog.snow.androidrecruittest.data.repository.AndroidRecruitTestRepository
@@ -10,12 +11,13 @@ import dog.snow.androidrecruittest.internal.lazyDeferred
  */
 class MainViewModel(private val androidRecruitTestRepository: AndroidRecruitTestRepository) : ViewModel() {
 
-    val items by lazyDeferred { androidRecruitTestRepository.getItems() }
+	val items by lazyDeferred { androidRecruitTestRepository.getItems() }
 
-    val networkState = Transformations.map(androidRecruitTestRepository.getNetworkState()) { it }
+	val phrase = MutableLiveData<String>()
 
-    suspend fun fetchItems() {
-        androidRecruitTestRepository.fetchItems()
-    }
+	val networkState = Transformations.map(androidRecruitTestRepository.getNetworkState()) { it }
 
+	suspend fun fetchItems() {
+		androidRecruitTestRepository.fetchItems()
+	}
 }

@@ -13,23 +13,23 @@ import retrofit2.http.GET
  * author marcinm on 2019-05-14.
  */
 interface AndroidRecruitTestApiService {
-    companion object {
-        operator fun invoke(connectivityInterceptor: ConnectivityInterceptor): AndroidRecruitTestApiService {
+	companion object {
+		operator fun invoke(connectivityInterceptor: ConnectivityInterceptor): AndroidRecruitTestApiService {
 
-            val okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(connectivityInterceptor)    //Comment this line for localhost
-                .build()
+			val okHttpClient = OkHttpClient.Builder()
+				.addInterceptor(connectivityInterceptor)    //Comment this line for localhost
+				.build()
 
-            return Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl("http://10.0.2.2:8080/api/")
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(AndroidRecruitTestApiService::class.java)
-        }
-    }
+			return Retrofit.Builder()
+				.client(okHttpClient)
+				.baseUrl("http://10.0.2.2:8080/api/")
+				.addCallAdapterFactory(CoroutineCallAdapterFactory())
+				.addConverterFactory(GsonConverterFactory.create())
+				.build()
+				.create(AndroidRecruitTestApiService::class.java)
+		}
+	}
 
-    @GET("items")
-    fun getItemsAsync(): Deferred<Response<List<Item>>>
+	@GET("items")
+	fun getItemsAsync(): Deferred<Response<ArrayList<Item>>>
 }

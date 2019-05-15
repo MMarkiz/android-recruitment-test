@@ -15,35 +15,35 @@ import kotlinx.coroutines.withContext
  * author marcinm on 2019-05-14.
  */
 class AndroidRecruitTestRepositoryImpl(
-    private val androidNetworkDataSource: AndroidRecruitTestDataSource,
-    private val itemDao: ItemDao
+	private val androidNetworkDataSource: AndroidRecruitTestDataSource,
+	private val itemDao: ItemDao
 ) : AndroidRecruitTestRepository {
 
 
-    init {
-        androidNetworkDataSource.apply {
-            downloadItems.observeForever { persistItems(it) }
-        }
-    }
+	init {
+		androidNetworkDataSource.apply {
+			downloadItems.observeForever { persistItems(it) }
+		}
+	}
 
-    override fun getNetworkState(): LiveData<Event<NetworkState>> {
-        return androidNetworkDataSource.networkState
-    }
+	override fun getNetworkState(): LiveData<Event<NetworkState>> {
+		return androidNetworkDataSource.networkState
+	}
 
-    override suspend fun getItems(): LiveData<List<Item>> {
-        return withContext(Dispatchers.IO) {
-            return@withContext itemDao.getItem()
-        }
-    }
+	override suspend fun getItems(): LiveData<List<Item>> {
+		return withContext(Dispatchers.IO) {
+			return@withContext itemDao.getItems()
+		}
+	}
 
-    override suspend fun fetchItems() {
-        androidNetworkDataSource.fetchItems()
-    }
+	override suspend fun fetchItems() {
+		androidNetworkDataSource.fetchItems()
+	}
 
 
-    private fun persistItems(items: List<Item>) {
-        GlobalScope.launch(Dispatchers.IO) {
-            itemDao.insertItemsList(items)
-        }
-    }
+	private fun persistItems(items: ArrayList<Item>) {
+		GlobalScope.launch(Dispatchers.IO) {
+			itemDao.insertItemsList(items)
+		}
+	}
 }

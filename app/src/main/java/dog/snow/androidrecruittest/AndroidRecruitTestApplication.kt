@@ -20,15 +20,15 @@ import org.kodein.di.generic.singleton
  */
 class AndroidRecruitTestApplication : Application(), KodeinAware {
 
-    override val kodein = Kodein.lazy {
-        import(androidXModule(this@AndroidRecruitTestApplication))
+	override val kodein = Kodein.lazy {
+		import(androidXModule(this@AndroidRecruitTestApplication))
 
-        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
-        bind() from singleton { AndroidRecruitTestApiService(instance()) }
-        bind<AndroidRecruitTestDataSource>() with singleton { AndroidRecruitTestDataSourceImpl(instance()) }
-        bind<AndroidRecruitTestRepository>() with singleton { AndroidRecruitTestRepositoryImpl(instance(), instance()) }
-        bind() from provider { MainViewModelFactory(instance()) }
-        bind() from  singleton { AndroidRecruitTestDatabase(instance()) }
-        bind() from  singleton { instance<AndroidRecruitTestDatabase>().itemDao() }
-    }
+		bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
+		bind() from singleton { AndroidRecruitTestApiService(instance()) }
+		bind<AndroidRecruitTestDataSource>() with singleton { AndroidRecruitTestDataSourceImpl(instance()) }
+		bind<AndroidRecruitTestRepository>() with singleton { AndroidRecruitTestRepositoryImpl(instance(), instance()) }
+		bind() from provider { MainViewModelFactory(instance()) }
+		bind() from  singleton { AndroidRecruitTestDatabase(instance()) }
+		bind() from  singleton { instance<AndroidRecruitTestDatabase>().itemDao() }
+	}
 }

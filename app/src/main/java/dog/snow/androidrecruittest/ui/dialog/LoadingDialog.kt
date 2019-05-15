@@ -12,19 +12,19 @@ import dog.snow.androidrecruittest.R
  */
 class LoadingDialog : DialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(activity!!)
+	override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+		val dialog = Dialog(activity!!)
 
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.dialog_loading)
-        dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog.show()
-        return dialog
-    }
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+		dialog.setCancelable(false)
+		dialog.setContentView(R.layout.dialog_loading)
+		dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+		dialog.show()
+		return dialog
+	}
 
-    override fun onPause() {
-        super.onPause()
-        this.dismissAllowingStateLoss()
-    }
+	override fun onPause() {
+		super.onPause()
+		this.dismissAllowingStateLoss()
+	}
 }

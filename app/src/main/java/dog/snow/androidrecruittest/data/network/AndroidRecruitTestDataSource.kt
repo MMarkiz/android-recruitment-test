@@ -9,8 +9,8 @@ import dog.snow.androidrecruittest.internal.Event
  * author marcinm on 2019-05-14.
  */
 interface AndroidRecruitTestDataSource {
-    val networkState: LiveData<Event<NetworkState>>
-    val downloadItems: LiveData<List<Item>>
+	val networkState: LiveData<Event<NetworkState>>
+	val downloadItems: LiveData<ArrayList<Item>>
 
-    suspend fun fetchItems()
+	suspend fun fetchItems()
 }

@@ -11,21 +11,21 @@ import androidx.room.RoomDatabase
 @Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class AndroidRecruitTestDatabase : RoomDatabase() {
 
-    abstract fun itemDao(): ItemDao
+	abstract fun itemDao(): ItemDao
 
-    companion object {
-        @Volatile
-        private var instance: AndroidRecruitTestDatabase? = null
-        private val LOCK = Any()
+	companion object {
+		@Volatile
+		private var instance: AndroidRecruitTestDatabase? = null
+		private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: buildDatabase(context).also { instance = it }
-        }
+		operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+			instance ?: buildDatabase(context).also { instance = it }
+		}
 
-        private fun buildDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,
-            AndroidRecruitTestDatabase::class.java,
-            "androidrecruittest.db"
-        ).build()
-    }
+		private fun buildDatabase(context: Context) = Room.databaseBuilder(
+			context.applicationContext,
+			AndroidRecruitTestDatabase::class.java,
+			"androidrecruittest.db"
+		).build()
+	}
 }

@@ -12,12 +12,12 @@ import androidx.room.Query
 @Dao
 interface ItemDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertItemsList(itemEntry: List<Item>)
+	@Insert(onConflict = OnConflictStrategy.REPLACE)
+	fun insertItemsList(itemEntry: ArrayList<Item>)
 
-    @Query("select * from item")
-    fun getItem(): LiveData<List<Item>>
+	@Query("select * from item")
+	fun getItems(): LiveData<List<Item>>
 
-    @Query("delete from item")
-    fun clearItems()
+	@Query("delete from item")
+	fun clearItems()
 }

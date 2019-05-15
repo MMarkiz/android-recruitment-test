@@ -12,39 +12,39 @@ import kotlin.coroutines.CoroutineContext
 /**
  * author marcinm on 2019-05-14.
  */
-abstract class AndroidRecruitTestFragment : Fragment(),CoroutineScope{
+abstract class AndroidRecruitTestFragment : Fragment(), CoroutineScope {
 
 
-    private lateinit var loadingDialog: LoadingDialog
+	private lateinit var loadingDialog: LoadingDialog
 
-    private lateinit var job : Job
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        job = Job()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        job.cancel()
-    }
+	private lateinit var job: Job
+	override val coroutineContext: CoroutineContext
+		get() = job + Dispatchers.Main
 
 
-    protected fun showSnackMessage(@StringRes message: Int) {
-        (activity as AndroidRecruitTestActivity).showSnackMessage(message)
-    }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		job = Job()
+	}
 
-    fun showLoadingDialog(show: Boolean) {
-        if (show) {
-            loadingDialog = LoadingDialog()
-            loadingDialog.setTargetFragment(this, 0)
-            loadingDialog.show(fragmentManager!!, null)
-        } else if (::loadingDialog.isInitialized) {
-            loadingDialog.dismiss()
-        }
+	override fun onDestroy() {
+		super.onDestroy()
+		job.cancel()
+	}
 
-    }
+
+	protected fun showSnackMessage(@StringRes message: Int) {
+		(activity as AndroidRecruitTestActivity).showSnackMessage(message)
+	}
+
+	fun showLoadingDialog(show: Boolean) {
+		if (show) {
+			loadingDialog = LoadingDialog()
+			loadingDialog.setTargetFragment(this, 0)
+			loadingDialog.show(fragmentManager!!, null)
+		} else if (::loadingDialog.isInitialized) {
+			loadingDialog.dismiss()
+		}
+
+	}
 }
