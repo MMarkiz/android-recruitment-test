@@ -63,8 +63,8 @@ class MainFragment : AndroidRecruitTestFragment(), KodeinAware {
 					adapter.setData(it)
 				else {
 					val items = it.filter { item ->
-						item.name.contains(mainViewModel.phrase.value.toString()) || item.description.contains(
-							mainViewModel.phrase.value.toString()
+						item.name.contains(mainViewModel.phrase.value.toString(),true) || item.description.contains(
+							mainViewModel.phrase.value.toString(),true
 						)
 					}
 					adapter.setData(items)
@@ -89,7 +89,7 @@ class MainFragment : AndroidRecruitTestFragment(), KodeinAware {
 
 	private fun getItemsByPhrase(phrase: String) = launch {
 		val items = mainViewModel.items.await().value!!.filter { item ->
-			item.name.contains(phrase) || item.description.contains(phrase)
+			item.name.contains(phrase,true) || item.description.contains(phrase,true)
 		}
 		if (items.isEmpty())
 			item_main_empty.visibility = View.VISIBLE
