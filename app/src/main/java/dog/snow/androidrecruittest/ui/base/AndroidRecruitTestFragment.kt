@@ -1,6 +1,7 @@
-package dog.snow.androidrecruittest.base
+package dog.snow.androidrecruittest.ui.base
 
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import dog.snow.androidrecruittest.ui.dialog.LoadingDialog
 import kotlinx.coroutines.CoroutineScope
@@ -29,6 +30,11 @@ abstract class AndroidRecruitTestFragment : Fragment(),CoroutineScope{
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
+    }
+
+
+    protected fun showSnackMessage(@StringRes message: Int) {
+        (activity as AndroidRecruitTestActivity).showSnackMessage(message)
     }
 
     fun showLoadingDialog(show: Boolean) {

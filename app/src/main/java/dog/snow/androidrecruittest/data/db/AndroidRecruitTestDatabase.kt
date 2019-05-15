@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 /**
  * author marcinm on 2019-05-14.
  */
-@Database(entities = [Item::class], version = 1)
+@Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class AndroidRecruitTestDatabase : RoomDatabase() {
 
     abstract fun itemDao(): ItemDao

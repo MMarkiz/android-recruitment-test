@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Android Recruit Test</string>
 
-
     <string name="main_search_hint">Search…</string>
     <string name="main_empty_list">No items to show…</string>
     <string name="main_icon">icon</string>
+    <string name="main_exit_click_info">Click back again to exit</string>
+
+    <string name="main_error_network_connection">No internet connection!</string>
+    <string name="main_refreshed_info">refreshed!</string>
+    <string name="main_error_not_found">Not found!</string>
+    <string name="main_error_unknown">Unknown error!</string>
 </resources>

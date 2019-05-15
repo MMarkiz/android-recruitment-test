@@ -14,6 +14,5 @@ data class Item(
     val icon: String,
     val name: String,
     val timestamp: Long,
-    val url: String,
-    var uri: String
+    val url: String
 )

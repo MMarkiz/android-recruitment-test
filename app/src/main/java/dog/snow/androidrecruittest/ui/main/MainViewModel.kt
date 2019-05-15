@@ -1,4 +1,4 @@
-package dog.snow.androidrecruittest.ui
+package dog.snow.androidrecruittest.ui.main
 
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,8 @@ class MainViewModel(private val androidRecruitTestRepository: AndroidRecruitTest
 
     val networkState = Transformations.map(androidRecruitTestRepository.getNetworkState()) { it }
 
-    public suspend fun fetchItems(){
+    suspend fun fetchItems() {
         androidRecruitTestRepository.fetchItems()
     }
+
 }

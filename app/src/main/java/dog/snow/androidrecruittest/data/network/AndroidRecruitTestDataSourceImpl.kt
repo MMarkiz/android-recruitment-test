@@ -25,6 +25,7 @@ class AndroidRecruitTestDataSourceImpl(private val androidRecruitTestApiService:
     override val downloadItems: LiveData<List<Item>>
         get() = _downloadItems
 
+
     override suspend fun fetchItems() {
         _networkState.postValue(Event(NetworkState.LOADING))
         try {
